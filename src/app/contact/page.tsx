@@ -52,7 +52,7 @@ export default function ContactPage() {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-primary/40"
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
             >
               <div className="flex items-center gap-4">
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-muted text-primary">

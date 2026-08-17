@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0e161d;
-  --surface: #141e27;
-  --surface-muted: #101820;
-  --foreground: #eaf2f2;
-  --muted: #7f97a3;
-  --border: rgba(234, 242, 242, 0.1);
-  --primary: #49d6c0;
-  --primary-strong: #6fe6d3;
-  --primary-soft: #2e6a5f;
-  --accent: #f2a93b;
-  --accent-soft: rgba(242, 169, 59, 0.14);
-  --ring: #49d6c0;
+  --background: #f4efe2;
+  --surface: #ffffff;
+  --surface-muted: #ece4d0;
+  --foreground: #241c17;
+  --muted: #6e6558;
+  --border: #e0d8c2;
+  --primary: #3b2a1e;
+  --primary-strong: #241a12;
+  --primary-soft: #8b9184;
+  --accent: #c2986a;
+  --accent-soft: #f0e2c4;
+  --ring: #3b2a1e;
 }
 
 @theme inline {
@@ -28,8 +28,25 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-geist-sans);
+  --font-serif: var(--font-fraunces);
   --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c1512;
+    --surface: #241a16;
+    --surface-muted: #2a1f1a;
+    --foreground: #f1e9da;
+    --muted: #ab9f8c;
+    --border: #3a2c22;
+    --primary: #d8bb8a;
+    --primary-strong: #e8cfa2;
+    --primary-soft: #8b9184;
+    --accent: #c2986a;
+    --accent-soft: #3f2f20;
+    --ring: #d8bb8a;
+  }
 }
 
 * {
@@ -43,9 +60,7 @@ body {
 }
 
 .font-serif {
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif), Georgia, serif;
 }
 
 .font-mono {
@@ -54,7 +69,44 @@ body {
 
 ::selection {
   background: var(--primary);
-  color: var(--background);
+  color: var(--surface);
+}
+
+.marquee-viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 42s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

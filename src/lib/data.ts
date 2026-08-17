@@ -13,6 +13,8 @@ export const profile = {
   linkedin: "#",
   resumeUrl: "#",
   location: "United States",
+  // TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
+  photoUrl: "",
   stats: [
     { label: "Years of experience", value: "4+" },
     { label: "Peer-reviewed publications", value: "10+" },
@@ -24,11 +26,50 @@ export type Publication = {
   title: string;
   venue: string;
   year: string;
+  note?: string;
   url?: string;
 };
 
-// TODO: replace with the real publication list.
-export const publications: Publication[] = [];
+// PLACEHOLDER — replace each entry below with a real publication.
+// Add or remove entries freely; the rolling display adapts automatically.
+export const publications: Publication[] = [
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+  {
+    title: "Publication title goes here",
+    venue: "Journal or conference name",
+    year: "20XX",
+    note: "One-line summary of the finding or contribution.",
+  },
+];
 
 export const navLinks = [
   { href: "/", label: "Home" },

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import Reveal from "@/components/motion/Reveal";
+import PortraitFrame from "@/components/PortraitFrame";
 import { profile } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function AboutPage() {
     <Container className="py-20 sm:py-28">
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="flex flex-col gap-6">
+          <PortraitFrame src={profile.photoUrl} alt={profile.name} />
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
           </p>
@@ -55,7 +57,7 @@ export default function AboutPage() {
           <div className="mt-4 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-strong"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-strong"
             >
               Get in touch
               <ArrowRight size={16} />

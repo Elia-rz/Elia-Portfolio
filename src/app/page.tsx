@@ -6,23 +6,17 @@ import Reveal from "@/components/motion/Reveal";
 import AnimatedStat from "@/components/motion/AnimatedStat";
 import { profile, caseStudies } from "@/lib/data";
 
-const readouts = [
-  { label: "DIAGNOSTIC LIFT", value: "+18pt" },
-  { label: "CLINICIANS STUDIED", value: "28" },
-  { label: "PUBLICATIONS", value: "10+" },
-];
-
 export default function Home() {
   return (
     <>
       {/* Hero */}
       <section className="border-b border-border">
-        <Container className="grid grid-cols-1 gap-14 py-20 sm:py-28 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+        <Container className="flex flex-col gap-8 py-20 sm:py-28">
           <Reveal>
             <p className="text-sm font-medium uppercase tracking-widest text-primary">
               {profile.title}
             </p>
-            <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-[1.12] text-foreground sm:text-6xl">
+            <h1 className="mt-6 max-w-3xl font-serif text-4xl leading-[1.15] text-foreground sm:text-5xl">
               {profile.tagline}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
@@ -33,44 +27,42 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/work"
-                className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-strong"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-strong"
               >
                 View case studies
                 <ArrowRight size={16} />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface-muted"
               >
                 Get in touch
               </Link>
             </div>
           </Reveal>
+        </Container>
+      </section>
 
-          <Reveal delay={0.12}>
-            <div className="rounded-md border border-border bg-surface p-6">
-              {readouts.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`flex items-baseline justify-between py-4 ${
-                    i !== readouts.length - 1 ? "border-b border-border" : ""
-                  }`}
-                >
-                  <span className="text-xs tracking-wide text-muted">
-                    {stat.label}
-                  </span>
-                  <span className="font-mono text-xl font-semibold text-primary">
-                    <AnimatedStat value={stat.value} />
-                  </span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+      {/* Stats */}
+      <section className="border-b border-border bg-surface-muted">
+        <Container className="grid grid-cols-1 gap-8 py-14 sm:grid-cols-3">
+          {profile.stats.map((stat, i) => (
+            <Reveal
+              key={stat.label}
+              delay={i * 0.1}
+              className="flex flex-col gap-1"
+            >
+              <span className="font-serif text-4xl text-primary">
+                <AnimatedStat value={stat.value} />
+              </span>
+              <span className="text-sm text-muted">{stat.label}</span>
+            </Reveal>
+          ))}
         </Container>
       </section>
 
       {/* Featured work */}
-      <section className="py-20 sm:py-28">
+      <section className="py-20 sm:py-24">
         <Container className="flex flex-col gap-10">
           <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -114,7 +106,7 @@ export default function Home() {
             </div>
             <Link
               href="/about"
-              className="inline-flex shrink-0 items-center gap-2 rounded-sm border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface"
             >
               More about me
               <ArrowRight size={16} />

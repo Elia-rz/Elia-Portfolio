@@ -59,7 +59,7 @@ export default async function CaseStudyPage({
 
           <Reveal delay={0.05} className="mt-6 flex flex-col gap-5">
             {study.status === "ongoing" && (
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent">
+              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-medium text-primary">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 In progress
               </span>
@@ -153,7 +153,7 @@ export default async function CaseStudyPage({
             {study.process.map((step, i) => (
               <Reveal key={step.title} delay={i * 0.06} y={16} scale={1}>
                 <li className="flex gap-5 border-b border-border py-5 first:pt-0 last:border-b-0 last:pb-0">
-                  <span className="font-mono text-xl text-primary-soft">
+                  <span className="font-serif text-xl text-primary-soft">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
@@ -190,7 +190,7 @@ export default async function CaseStudyPage({
             >
               {study.results.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="font-mono text-3xl font-semibold text-primary">
+                  <span className="font-serif text-3xl text-primary">
                     <AnimatedStat value={stat.value} />
                   </span>
                   <span className="text-sm text-muted">{stat.label}</span>
@@ -220,7 +220,7 @@ export default async function CaseStudyPage({
           </div>
           <Link
             href={`/work/${next.slug}`}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-strong"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-strong"
           >
             Read case study
             <ArrowRight size={16} />
