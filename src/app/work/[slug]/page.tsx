@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import Tag from "@/components/Tag";
+import Reveal from "@/components/motion/Reveal";
+import AnimatedStat from "@/components/motion/AnimatedStat";
 import { caseStudies } from "@/lib/data";
 
 export function generateStaticParams() {
@@ -55,7 +57,7 @@ export default async function CaseStudyPage({
             All case studies
           </Link>
 
-          <div className="mt-6 flex flex-col gap-5">
+          <Reveal delay={0.05} className="mt-6 flex flex-col gap-5">
             {study.status === "ongoing" && (
               <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
@@ -68,9 +70,12 @@ export default async function CaseStudyPage({
             <p className="max-w-2xl text-lg leading-relaxed text-muted">
               {study.subtitle}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
+          <Reveal
+            delay={0.15}
+            className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4"
+          >
             {metaFields(study).map((field) => (
               <div key={field.label} className="flex flex-col gap-1">
                 <span className="text-xs font-medium uppercase tracking-wide text-muted">
@@ -81,7 +86,7 @@ export default async function CaseStudyPage({
                 </span>
               </div>
             ))}
-          </div>
+          </Reveal>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {study.tools.map((tool) => (
@@ -94,93 +99,104 @@ export default async function CaseStudyPage({
       <Container className="flex flex-col gap-16 py-16 sm:py-20">
         {/* Overview */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
-          <h2 className="font-serif text-xl text-foreground">Overview</h2>
-          <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground/90">
+          <Reveal>
+            <h2 className="font-serif text-xl text-foreground">Overview</h2>
+          </Reveal>
+          <Reveal delay={0.08} className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground/90">
             {study.overview.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-          </div>
+          </Reveal>
         </section>
 
         {/* Problem */}
         {study.problem && (
           <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
-            <h2 className="font-serif text-xl text-foreground">Problem</h2>
-            <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground/90">
+            <Reveal>
+              <h2 className="font-serif text-xl text-foreground">Problem</h2>
+            </Reveal>
+            <Reveal delay={0.08} className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground/90">
               {study.problem.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
-            </div>
+            </Reveal>
           </section>
         )}
 
         {/* Goals */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
-          <h2 className="font-serif text-xl text-foreground">
-            Goals
-          </h2>
+          <Reveal>
+            <h2 className="font-serif text-xl text-foreground">Goals</h2>
+          </Reveal>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {study.goals.map((goal) => (
-              <div
-                key={goal.title}
-                className="rounded-xl border border-border bg-surface p-5"
-              >
-                <h3 className="text-sm font-semibold text-primary">
-                  {goal.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {goal.description}
-                </p>
-              </div>
+            {study.goals.map((goal, i) => (
+              <Reveal key={goal.title} delay={i * 0.08}>
+                <div className="h-full rounded-xl border border-border bg-surface p-5">
+                  <h3 className="text-sm font-semibold text-primary">
+                    {goal.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {goal.description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
         {/* Process */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
-          <h2 className="font-serif text-xl text-foreground">Process</h2>
+          <Reveal>
+            <h2 className="font-serif text-xl text-foreground">Process</h2>
+          </Reveal>
           <ol className="flex flex-col">
             {study.process.map((step, i) => (
-              <li
-                key={step.title}
-                className="flex gap-5 border-b border-border py-5 first:pt-0 last:border-b-0 last:pb-0"
-              >
-                <span className="font-serif text-xl text-primary-soft">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-medium text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                    {step.description}
-                  </p>
-                </div>
-              </li>
+              <Reveal key={step.title} delay={i * 0.06} y={16} scale={1}>
+                <li className="flex gap-5 border-b border-border py-5 first:pt-0 last:border-b-0 last:pb-0">
+                  <span className="font-mono text-xl text-primary-soft">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-medium text-foreground">
+                      {step.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                      {step.description}
+                    </p>
+                  </div>
+                </li>
+              </Reveal>
             ))}
           </ol>
         </section>
 
         {/* Results */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
-          <h2 className="font-serif text-xl text-foreground">
-            Results &amp; Impact
-          </h2>
+          <Reveal>
+            <h2 className="font-serif text-xl text-foreground">
+              Results &amp; Impact
+            </h2>
+          </Reveal>
           <div className="flex flex-col gap-8">
-            <p className="text-[17px] leading-relaxed text-foreground/90">
-              {study.results.intro}
-            </p>
+            <Reveal>
+              <p className="text-[17px] leading-relaxed text-foreground/90">
+                {study.results.intro}
+              </p>
+            </Reveal>
 
-            <div className="grid grid-cols-1 gap-6 rounded-2xl border border-border bg-surface-muted p-8 sm:grid-cols-3">
+            <Reveal
+              delay={0.1}
+              className="grid grid-cols-1 gap-6 rounded-2xl border border-border bg-surface-muted p-8 sm:grid-cols-3"
+            >
               {study.results.stats.map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
-                  <span className="font-serif text-3xl text-primary">
-                    {stat.value}
+                  <span className="font-mono text-3xl font-semibold text-primary">
+                    <AnimatedStat value={stat.value} />
                   </span>
                   <span className="text-sm text-muted">{stat.label}</span>
                 </div>
               ))}
-            </div>
+            </Reveal>
 
             <div className="flex flex-col gap-4 text-[17px] leading-relaxed text-foreground/90">
               {study.results.narrative.map((p, i) => (
@@ -204,7 +220,7 @@ export default async function CaseStudyPage({
           </div>
           <Link
             href={`/work/${next.slug}`}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-strong"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-strong"
           >
             Read case study
             <ArrowRight size={16} />

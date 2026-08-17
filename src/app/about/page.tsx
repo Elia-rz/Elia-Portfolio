@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
+import Reveal from "@/components/motion/Reveal";
 import { profile } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -36,7 +37,7 @@ export default function AboutPage() {
   return (
     <Container className="py-20 sm:py-28">
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="flex flex-col gap-6">
+        <Reveal className="flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
           </p>
@@ -54,7 +55,7 @@ export default function AboutPage() {
           <div className="mt-4 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-strong"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-primary-strong"
             >
               Get in touch
               <ArrowRight size={16} />
@@ -66,9 +67,9 @@ export default function AboutPage() {
               See publications
             </Link>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-4">
+        <Reveal delay={0.12} className="flex flex-col gap-4">
           <div className="rounded-2xl border border-border bg-surface-muted p-8">
             <h2 className="font-serif text-xl text-foreground">
               Areas of focus
@@ -86,7 +87,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </Container>
   );

@@ -7,7 +7,7 @@ export default function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <Link
       href={`/work/${study.slug}`}
-      className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-surface p-8 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
+      className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-surface p-8 transition-all hover:-translate-y-1 hover:border-primary/40"
     >
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">

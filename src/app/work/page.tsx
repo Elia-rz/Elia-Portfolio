@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import Reveal from "@/components/motion/Reveal";
 import { caseStudies } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function WorkPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Case studies
         </p>
@@ -24,11 +25,13 @@ export default function WorkPage() {
           high-stakes clinical decision support to everyday wellness
           guidance.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {caseStudies.map((study) => (
-          <CaseStudyCard key={study.slug} study={study} />
+        {caseStudies.map((study, i) => (
+          <Reveal key={study.slug} delay={i * 0.1}>
+            <CaseStudyCard study={study} />
+          </Reveal>
         ))}
       </div>
     </Container>

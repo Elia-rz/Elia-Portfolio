@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
+import Reveal from "@/components/motion/Reveal";
 import { profile, publications } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function PublicationsPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Publications
         </p>
@@ -21,7 +22,7 @@ export default function PublicationsPage() {
           My research spans explainable AI, clinical decision support, and
           human factors in safety-critical systems.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14">
         {publications.length > 0 ? (
@@ -52,7 +53,7 @@ export default function PublicationsPage() {
             ))}
           </ul>
         ) : (
-          <div className="rounded-2xl border border-dashed border-border bg-surface-muted p-10 text-center">
+          <Reveal className="rounded-2xl border border-dashed border-border bg-surface-muted p-10 text-center">
             <p className="text-muted">
               The full publication list is being added here. In the
               meantime, feel free to{" "}
@@ -64,7 +65,7 @@ export default function PublicationsPage() {
               </a>{" "}
               for a copy of my CV.
             </p>
-          </div>
+          </Reveal>
         )}
       </div>
     </Container>

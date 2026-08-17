@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
 import LinkedinIcon from "@/components/icons/LinkedinIcon";
+import Reveal from "@/components/motion/Reveal";
 import { profile } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ const channels = [
 export default function ContactPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="text-sm font-medium uppercase tracking-widest text-primary">
           Contact
         </p>
@@ -38,37 +39,40 @@ export default function ContactPage() {
           Whether you&apos;re hiring, collaborating on research, or just want
           to talk shop — I&apos;d love to hear from you.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {channels.map((channel) => (
-          <a
-            key={channel.label}
-            href={channel.href}
-            target={channel.label === "LinkedIn" ? "_blank" : undefined}
-            rel={
-              channel.label === "LinkedIn" ? "noopener noreferrer" : undefined
-            }
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
-          >
-            <div className="flex items-center gap-4">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-muted text-primary">
-                <channel.icon size={20} />
-              </span>
-              <div>
-                <p className="text-sm font-medium text-muted">
-                  {channel.label}
-                </p>
-                <p className="text-[15px] font-medium text-foreground">
-                  {channel.value}
-                </p>
+        {channels.map((channel, i) => (
+          <Reveal key={channel.label} delay={i * 0.1}>
+            <a
+              href={channel.href}
+              target={channel.label === "LinkedIn" ? "_blank" : undefined}
+              rel={
+                channel.label === "LinkedIn"
+                  ? "noopener noreferrer"
+                  : undefined
+              }
+              className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-primary/40"
+            >
+              <div className="flex items-center gap-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-muted text-primary">
+                  <channel.icon size={20} />
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-muted">
+                    {channel.label}
+                  </p>
+                  <p className="text-[15px] font-medium text-foreground">
+                    {channel.value}
+                  </p>
+                </div>
               </div>
-            </div>
-            <ArrowUpRight
-              size={18}
-              className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
-            />
-          </a>
+              <ArrowUpRight
+                size={18}
+                className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
+              />
+            </a>
+          </Reveal>
         ))}
       </div>
     </Container>
