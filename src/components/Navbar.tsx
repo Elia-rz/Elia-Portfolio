@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "./Container";
+import ThemeToggle from "./ThemeToggle";
 import { navLinks } from "@/lib/data";
 
 export default function Navbar() {
@@ -42,13 +43,16 @@ export default function Navbar() {
           })}
         </nav>
 
-        <button
-          className="sm:hidden text-foreground"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <button
+            className="text-foreground sm:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </Container>
 
       {open && (
