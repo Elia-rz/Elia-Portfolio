@@ -191,7 +191,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Assess the effect of demographics",
         description:
-          "Examining how clinician demographics — age, gender, and years of experience — relate to perceived AI usefulness, mental demand, and stress, to ensure the explainability design serves a broad range of practitioners rather than a narrow one.",
+          "Examining how clinician demographics relate to targeted variables, to ensure the explainability design serves a broad range of practitioners rather than a narrow one.",
       },
     ],
     process: [

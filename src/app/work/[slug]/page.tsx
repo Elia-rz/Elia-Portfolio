@@ -200,35 +200,30 @@ export default async function CaseStudyPage({
           <Reveal>
             <h2 className="font-serif text-xl text-foreground">Process</h2>
           </Reveal>
-          <ol className="flex flex-col">
-            {study.process.map((step, i) => (
-              <Reveal key={step.title} delay={i * 0.06} y={16} scale={1}>
-                <li className="flex gap-5 border-b border-border py-5 first:pt-0 last:border-b-0 last:pb-0">
-                  <span className="font-serif text-xl text-primary-soft">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="font-medium text-foreground">
-                      {step.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-          {study.processFigure && (
-            <div className="lg:col-start-2">
-              <Figure
-                figure={study.processFigure}
-                frame={false}
-                maxWidth="max-w-xs sm:max-w-sm"
-                center
-              />
-            </div>
-          )}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
+            <ol className="flex flex-col">
+              {study.process.map((step, i) => (
+                <Reveal key={step.title} delay={i * 0.06} y={16} scale={1}>
+                  <li className="flex gap-5 border-b border-border py-5 first:pt-0 last:border-b-0 last:pb-0">
+                    <span className="font-serif text-xl text-primary-soft">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-medium text-foreground">
+                        {step.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                        {step.description}
+                      </p>
+                    </div>
+                  </li>
+                </Reveal>
+              ))}
+            </ol>
+            {study.processFigure && (
+              <Figure figure={study.processFigure} frame={false} />
+            )}
+          </div>
         </section>
 
         {/* Results */}
