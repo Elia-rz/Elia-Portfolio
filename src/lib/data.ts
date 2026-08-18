@@ -10,11 +10,11 @@ export const profile = {
     "I'm passionate about designing systems that improve user experience, safety, and real-world decision-making — particularly at the intersection of AI and human judgment.",
   ],
   email: "elia.rezaeian95@gmail.com",
-  linkedin: "#",
+  linkedin: "https://www.linkedin.com/in/eliarezaeian/",
   resumeUrl: "#",
   googleScholarUrl: "https://scholar.google.com/citations?user=oTws99AAAAAJ&hl=en",
   location: "United States",
-  // TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
+  //  TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
   photoUrl: "",
   stats: [
     { label: "Years of experience", value: "4+" },
@@ -44,6 +44,8 @@ export const publications: Publication[] = [
     venue: "International Journal of Human–Computer Interaction",
     year: "2026",
     authors: "Rezaeian, Bayrak, Asan",
+    logoUrl:"/venue/IJHCI.jpg",
+    url:"https://www.tandfonline.com/doi/abs/10.1080/10447318.2025.2539458"
   },
   {
     title:
@@ -51,6 +53,8 @@ export const publications: Publication[] = [
     venue: "Applied Ergonomics",
     year: "2025",
     authors: "Rezaeian, Asan, Bayrak",
+    url:"https://www.sciencedirect.com/science/article/pii/S0003687025001139",
+    logoUrl:"/venue/applied.jpg"
   },
   {
     title:
@@ -58,18 +62,24 @@ export const publications: Publication[] = [
     venue: "JMIR Formative Research",
     year: "2024",
     authors: "Wang, Rezaeian, Asan, Zhang, Liao",
+    url:"https://formative.jmir.org/2024/1/e60759",
+    logoUrl:"/venue/jmir.jpg"
   },
   {
     title: "An architecture to support graduated levels of trust for cancer diagnosis with AI",
     venue: "International Conference on Human-Computer Interaction",
     year: "2024",
     authors: "Rezaeian, Bayrak, Asan",
+    logoUrl:"/venue/hci.jpg",
+    url:"https://link.springer.com/chapter/10.1007/978-3-031-61966-3_37"
   },
   {
     title: "Customer churn prediction using data mining techniques for an Iranian payment application",
     venue: "International Conference on Information and Knowledge Technology",
     year: "2021",
     authors: "Rezaeian, Haghighi, Shahrabi",
+    logoUrl:"/venue/ieee.jpg",
+    url:"https://ieeexplore.ieee.org/document/9685502"
   },
   {
     title:
@@ -77,6 +87,8 @@ export const publications: Publication[] = [
     venue: "System of Systems Engineering Conference (SoSE)",
     year: "2024",
     authors: "Khameneh, Rezaeian, Mansouri",
+    logoUrl:"/venue/ieee.jpg",
+    url:"https://ieeexplore.ieee.org/abstract/document/10620942"
   },
   {
     title:
@@ -84,12 +96,16 @@ export const publications: Publication[] = [
     venue: "BMC Health Services Research",
     year: "2025",
     authors: "Asan, Elkourdi, Super, Rezaeian, Percy, Clouser",
+    logoUrl:"/venue/BMC.jpg",
+    url:"https://link.springer.com/article/10.1186/s12913-025-12857-9"
   },
   {
     title: "Clinician perspectives on trust and adoption of AI in breast cancer diagnosis",
     venue: "IISE Transactions on Healthcare Systems Engineering",
     year: "2026",
     authors: "Rezaeian, Ghorbanichemazkati, Bayrak, Asan",
+    logoUrl:"/venue/iise.jpg",
+    url:"https://www.tandfonline.com/doi/abs/10.1080/24725579.2025.2611435"
   },
   {
     title:
@@ -97,6 +113,8 @@ export const publications: Publication[] = [
     venue: "International Journal of Medical Informatics",
     year: "2026",
     authors: "Super, Rezaeian, Asan",
+    logoUrl:"/venue/info.jpg",
+    url:"https://www.sciencedirect.com/science/article/abs/pii/S1386505626003886"
   },
 ];
 
