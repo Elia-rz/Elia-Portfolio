@@ -17,9 +17,9 @@ export const profile = {
   //  TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
   photoUrl: "",
   stats: [
-    { label: "Years of experience", value: "4+" },
+    { label: "Years of experience", value: "5+" },
     { label: "Peer-reviewed publications", value: "10+" },
-    { label: "Clinicians & users studied", value: "60+" },
+    { label: "Clinicians & users studied", value: "150+" },
   ],
 };
 
