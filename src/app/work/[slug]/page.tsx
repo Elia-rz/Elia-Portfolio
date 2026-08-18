@@ -1,12 +1,35 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 import Container from "@/components/Container";
 import Tag from "@/components/Tag";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedStat from "@/components/motion/AnimatedStat";
 import { caseStudies } from "@/lib/data";
+
+function Figure({
+  figure,
+}: {
+  figure: { src: string; alt: string; caption: string };
+}) {
+  return (
+    <Reveal className="flex flex-col gap-3">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white">
+        <Image
+          src={figure.src}
+          alt={figure.alt}
+          width={1700}
+          height={2200}
+          sizes="(min-width: 1024px) 800px, 100vw"
+          className="h-auto w-full"
+        />
+      </div>
+      <p className="text-sm text-muted">{figure.caption}</p>
+    </Reveal>
+  );
+}
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -168,6 +191,11 @@ export default async function CaseStudyPage({
               </Reveal>
             ))}
           </ol>
+          {study.processFigure && (
+            <div className="lg:col-start-2">
+              <Figure figure={study.processFigure} />
+            </div>
+          )}
         </section>
 
         {/* Results */}
@@ -203,8 +231,36 @@ export default async function CaseStudyPage({
                 <p key={i}>{p}</p>
               ))}
             </div>
+
+            {study.resultsFigure && <Figure figure={study.resultsFigure} />}
           </div>
         </section>
+
+        {/* Quotes */}
+        {study.quotes && study.quotes.length > 0 && (
+          <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+            <Reveal>
+              <h2 className="font-serif text-xl text-foreground">
+                In their words
+              </h2>
+            </Reveal>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              {study.quotes.map((quote, i) => (
+                <Reveal key={i} delay={i * 0.1}>
+                  <div className="flex h-full flex-col gap-3 rounded-xl border border-border bg-surface-muted p-6">
+                    <Quote size={20} className="text-primary-soft" />
+                    <p className="font-serif text-lg italic leading-snug text-foreground">
+                      "{quote.text}"
+                    </p>
+                    <p className="mt-auto text-sm text-muted">
+                      {quote.attribution}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )}
       </Container>
 
       {/* Next case study */}

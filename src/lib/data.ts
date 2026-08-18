@@ -140,11 +140,14 @@ export type CaseStudy = {
   problem?: string[];
   goals: { title: string; description: string }[];
   process: { title: string; description: string }[];
+  processFigure?: { src: string; alt: string; caption: string };
   results: {
     intro: string;
     stats: { label: string; value: string }[];
     narrative: string[];
   };
+  resultsFigure?: { src: string; alt: string; caption: string };
+  quotes?: { text: string; attribution: string }[];
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -156,12 +159,16 @@ export const caseStudies: CaseStudy[] = [
     timeline: "Dec 2023 – Aug 2024",
     team: "PhD Candidate + 2 Faculty Advisors",
     role: "Lead Human Factors & UX Researcher - PhD Dissertation Research",
-    audience: "Oncologists & Radiologists",
+    audience: "Radiologists, Oncologists & Breast Surgeons",
     tools: ["Python", "Dash", "Plotly"],
     overview: [
       "This project is part of my PhD dissertation and examines how explainable AI (XAI) influences clinicians' trust, decision-making, and performance in breast cancer diagnosis. As AI-driven decision support systems become more common in clinical practice, clinicians must be able to understand and appropriately rely on AI recommendations, especially in high-stakes medical contexts.",
-      "I designed and evaluated a custom AI-assisted diagnostic system in which clinicians interacted with different levels of explanation while reviewing medical images. By analyzing their diagnostic decisions, agreement with the AI, perceived trust, and cognitive load, I investigated how varying degrees of transparency shape clinical reasoning and reliance on AI.",
+      "I built a custom AI-based Clinical Decision Support System combining a U-Net segmentation model with a CNN classifier, trained on a de-identified dataset of 780 breast ultrasound images, that suggested a diagnosis (healthy, benign, or malignant) with 81% standalone accuracy. Clinicians then interacted with this system across four distinct levels of explanation while reviewing medical images.",
+      "By analyzing their diagnostic decisions, agreement with the AI, perceived trust, and cognitive load, I investigated how varying degrees of transparency shape clinical reasoning and reliance on AI.",
       "The findings from this work inform the design of trustworthy, user-centered AI systems that support clinicians in making informed and confident diagnostic decisions.",
+    ],
+    problem: [
+      "It's often assumed that more explanation from an AI system builds more trust and better decisions. But for expert clinicians making high-stakes diagnoses under time pressure, there was little evidence for whether that assumption actually holds — or whether additional information could instead add cognitive burden without adding clarity.",
     ],
     goals: [
       {
@@ -177,31 +184,41 @@ export const caseStudies: CaseStudy[] = [
         description: "Using standardized workload assessment metrics to track mental demand and stress.",
       },
       {
-        title:"assess the effect of demographics",
-        description:"..."
-
+        title: "Assess the effect of demographics",
+        description:
+          "Examining how clinician demographics — age, gender, and years of experience — relate to perceived AI usefulness, mental demand, and stress, to ensure the explainability design serves a broad range of practitioners rather than a narrow one.",
       },
     ],
     process: [
       {
         title: "Recruitment & onboarding",
         description:
-          "28 clinicians (oncologists and radiologists spanning early-career to senior experts) were recruited through medical associations, social platforms, and professional networks, then onboarded with a standardized tutorial and pre-experiment survey.",
+          "28 licensed clinicians (60% radiologists, 18% oncologists, 22% other breast-care specialists) were recruited through medical associations, social platforms, and professional networks, then onboarded with a video tutorial and a pre-experiment survey covering demographics and baseline attitudes toward AI.",
       },
       {
-        title: "Baseline (no AI support)",
+        title: "Baseline — no AI",
         description:
-          "Participants first reviewed a set of breast ultrasound images without any AI assistance, establishing a baseline for independent diagnostic accuracy.",
+          "Clinicians diagnosed 10 breast ultrasound images with no AI support at all, using only their own judgment. This established each clinician's independent accuracy before any AI was introduced.",
       },
       {
-        title: "AI-assisted baseline (no explanation)",
+        title: "Intervention I — No explanation",
         description:
-          "Clinicians then diagnosed a new set of images with AI-generated recommendations but no accompanying explanation, rating their trust and agreement after each case.",
+          "The AI suggested a diagnosis (healthy, benign, or malignant) with no supporting explanation — the simplest possible AI-assisted condition.",
       },
       {
-        title: "Explainability interventions",
+        title: "Intervention II — AI confidence",
         description:
-          "In three subsequent conditions, clinicians interacted with the same AI system augmented with different explainability features (e.g., confidence indicators, model reasoning) — each a distinct design choice for supporting transparency and interpretability.",
+          "The same diagnosis suggestion, now paired with a confidence score for each category, letting clinicians see how certain the model was.",
+      },
+      {
+        title: "Intervention III — Tumor localization",
+        description:
+          "In addition to the diagnosis and confidence score, the system highlighted where on the image it believed the tumor was located, using the U-Net segmentation output.",
+      },
+      {
+        title: "Intervention IV — Enhanced localization",
+        description:
+          "The richest condition: tumor location shown with both low- and high-confidence regions, giving clinicians the most detailed view of the model's reasoning.",
       },
       {
         title: "Post-study interviews",
@@ -209,20 +226,43 @@ export const caseStudies: CaseStudy[] = [
           "A subset of 11 clinicians took part in semi-structured interviews, analyzed using thematic analysis to surface deeper insight into how explainability shaped trust formation and real-world applicability.",
       },
     ],
+    processFigure: {
+      src: "/case-studies/breast-cancer/methodology.png",
+      alt: "Study flow diagram: recruitment and demographics, experiment design across baseline, AI-assisted baseline, and the four explainability interventions, then post-study interviews",
+      caption: "The full study flow — from recruitment through the interrupted time-series experiment to post-study interviews.",
+    },
     results: {
       intro:
-        "This mixed-methods, interrupted time-series design tracked how clinicians' trust, cognitive workload, and diagnostic behavior evolved across five conditions — from an unassisted baseline through three explainability interventions.",
+        "This mixed-methods, interrupted time-series design tracked how clinicians' trust, cognitive workload, and diagnostic behavior evolved across five conditions — an unassisted baseline followed by four AI-assisted interventions with increasing levels of explanation. The headline finding surprised me: more explanation did not mean better outcomes.",
       stats: [
         { label: "Clinicians in the study", value: "28" },
         { label: "Post-study interviews", value: "11" },
-        { label: "Diagnostic performance vs. baseline", value: "+18pt" },
+        { label: "Performance lift, any AI vs. no AI", value: "+17pt" },
       ],
       narrative: [
-        "Diagnostic performance rose from roughly 57% at baseline to as high as 75% once explainability features were introduced, with trust and perceived accuracy tracking closely with performance across the explainability interventions.",
-        "Interview data surfaced how clinicians reasoned about AI transparency in practice — where explanations built confidence, and where they risked adding cognitive burden without adding clarity.",
-        "These findings directly inform best practices for designing transparent, trustworthy clinical decision-support systems that support — rather than replace — expert judgment.",
+        "Any AI assistance significantly beat the unassisted baseline on both trust and diagnostic accuracy — performance rose from roughly 57% with no AI to as high as 74% once the AI was introduced. But that lift came almost entirely from the AI being present at all, not from how much it explained itself.",
+        "Among the four AI conditions, the simplest one — a bare diagnosis suggestion with no explanation — actually performed best overall: highest understandability, lowest mental demand and stress, and diagnostic accuracy on par with the richer conditions. The most detailed condition (tumor location with confidence levels) significantly reduced understandability and perceived accuracy, and increased decision time, compared to the simplest one.",
+        "Clinicians spent more time per case as explanations grew richer, and reported the two most detail-heavy conditions as \"overwhelming\" or \"too dense\" in interviews — a concrete case of explanation adding cognitive load rather than reducing it.",
+        "The 28-clinician sample (60% radiologists, 18% oncologists, 22% other breast-care specialists) averaged 42.6 years of age and 8.9 years of experience. Older clinicians rated AI's usefulness more positively, while younger clinicians reported higher mental demand and stress when using it.",
+        "Even the best-performing AI-assisted condition still fell short of the underlying model's own 81% standalone accuracy — evidence that there's real room to improve human-AI collaboration through interface and explanation design, not just model accuracy.",
+        "These findings directly inform best practices for designing transparent, trustworthy clinical decision-support systems: explanations should be there to clarify, not to demonstrate sophistication, and simpler is often the safer default.",
       ],
     },
+    resultsFigure: {
+      src: "/case-studies/breast-cancer/results.png",
+      alt: "Chart of diagnostic performance, trust, perceived accuracy, and understandability across baseline and four interventions, plus age and experience distributions of the study sample",
+      caption: "Diagnostic performance, trust, and perceived accuracy across conditions, alongside the study sample's age and experience distribution.",
+    },
+    quotes: [
+      {
+        text: "It's just a matter of figuring out appropriate protocols and policies and what not on how AI is going to be used.",
+        attribution: "Radiologist, study participant",
+      },
+      {
+        text: "Honestly, I think it would be useful and helpful for somebody who's not as experienced — but once you're a practicing physician with a lot of experience, I don't think that adds much benefit.",
+        attribution: "Pathologist, study participant",
+      },
+    ],
   },
   {
     slug: "transparent-ai-wellness-coach",
@@ -233,7 +273,7 @@ export const caseStudies: CaseStudy[] = [
     timeline: "Sep 2025 – Present",
     team: "PhD Candidate + 2 Faculty Advisors",
     role: "Human Factors & UX Scientist",
-    audience: "Everyday, non-expert users",
+    audience: "Everyday, non-expert users (Stevens Institute of Technology students)",
     tools: ["Next.js", "Python", "HTML", "CSS"],
     overview: [
       "This project explores how an AI-powered wellness chatbot can support users in making healthier lifestyle choices while maintaining transparency, trust, and user agency. As conversational AI becomes increasingly common in health and wellness applications, users often struggle to understand why certain recommendations are made — which can reduce trust or lead to disengagement.",

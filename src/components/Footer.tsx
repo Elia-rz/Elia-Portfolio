@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="border-t border-border">
       <Container className="flex flex-col gap-4 py-10 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-sm text-muted">
-          © {new Date().getFullYear()} {profile.name}. Built with care.
+          © {new Date().getFullYear()} {profile.name}.
         </p>
         <div className="flex items-center gap-5">
           <a
