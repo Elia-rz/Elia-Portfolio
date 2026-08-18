@@ -11,13 +11,13 @@ function VenueImage({ pub }: { pub: Publication }) {
         alt={pub.venue}
         width={88}
         height={88}
-        className="h-22 w-22 shrink-0 rounded-xl border border-border bg-white object-contain p-2"
+        className="h-22 w-22 shrink-0 rounded-xl bg-white object-contain p-2"
       />
     );
   }
 
   return (
-    <div className="h-22 w-22 flex shrink-0 flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-border bg-accent-soft">
+    <div className="h-22 w-22 flex shrink-0 flex-col items-center justify-center gap-1 rounded-xl bg-accent-soft">
       <ImagePlus size={18} className="text-primary/60" />
       <span className="text-[10px] font-semibold tracking-tight text-primary">
         {venueInitials(pub.venue)}
@@ -36,11 +36,11 @@ function PublicationCard({ pub }: { pub: Publication }) {
       href={pub.url ?? scholarSearchUrl(pub.title)}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-[360px] w-[300px] shrink-0 flex-col gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
+      className="flex h-[320px] w-[300px] shrink-0 flex-col gap-4 rounded-2xl border border-border bg-surface p-6 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
     >
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex items-center justify-between gap-3">
         <VenueImage pub={pub} />
-        <span className="text-right text-xs font-medium uppercase leading-snug tracking-wide text-muted">
+        <span className="flex-1 text-center text-xs font-medium uppercase leading-snug tracking-wide text-muted">
           {pub.venue}
         </span>
       </div>
@@ -50,7 +50,7 @@ function PublicationCard({ pub }: { pub: Publication }) {
       <p className="line-clamp-2 text-sm leading-relaxed text-muted">
         {pub.authors}
       </p>
-      <p className="mt-auto text-xs font-medium uppercase tracking-wide text-muted">
+      <p className="text-xs font-medium uppercase tracking-wide text-muted">
         {pub.year}
       </p>
     </a>

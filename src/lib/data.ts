@@ -155,11 +155,11 @@ export const caseStudies: CaseStudy[] = [
       "How explainable AI shapes clinicians' trust, cognitive load, and diagnostic performance in high-stakes breast cancer diagnosis.",
     timeline: "Dec 2023 – Aug 2024",
     team: "PhD Candidate + 2 Faculty Advisors",
-    role: "Lead UX Researcher — PhD Dissertation Research",
+    role: "Lead Human Factors & UX Researcher - PhD Dissertation Research",
     audience: "Oncologists & Radiologists",
     tools: ["Python", "Dash", "Plotly"],
     overview: [
-      "This project is part of my PhD dissertation and examines how explainable AI (XAI) influences clinicians' trust, decision-making, and performance in breast cancer diagnosis. As AI-driven decision support systems become more common in clinical practice, clinicians must be able to understand and appropriately rely on AI recommendations — especially in high-stakes medical contexts.",
+      "This project is part of my PhD dissertation and examines how explainable AI (XAI) influences clinicians' trust, decision-making, and performance in breast cancer diagnosis. As AI-driven decision support systems become more common in clinical practice, clinicians must be able to understand and appropriately rely on AI recommendations, especially in high-stakes medical contexts.",
       "I designed and evaluated a custom AI-assisted diagnostic system in which clinicians interacted with different levels of explanation while reviewing medical images. By analyzing their diagnostic decisions, agreement with the AI, perceived trust, and cognitive load, I investigated how varying degrees of transparency shape clinical reasoning and reliance on AI.",
       "The findings from this work inform the design of trustworthy, user-centered AI systems that support clinicians in making informed and confident diagnostic decisions.",
     ],
@@ -175,6 +175,11 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Examine cognitive workload",
         description: "Using standardized workload assessment metrics to track mental demand and stress.",
+      },
+      {
+        title:"assess the effect of demographics",
+        description:"..."
+
       },
     ],
     process: [
