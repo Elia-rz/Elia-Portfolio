@@ -1,18 +1,35 @@
-import { BookOpen } from "lucide-react";
+import Image from "next/image";
 import { Publication } from "@/lib/data";
+import { venueInitials } from "@/lib/venueInitials";
+
+function VenueBadge({ pub }: { pub: Publication }) {
+  if (pub.logoUrl) {
+    return (
+      <Image
+        src={pub.logoUrl}
+        alt={pub.venue}
+        width={36}
+        height={36}
+        className="h-9 w-9 rounded-full border border-border bg-white object-contain p-1.5"
+      />
+    );
+  }
+
+  return (
+    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft text-[11px] font-semibold tracking-tight text-primary">
+      {venueInitials(pub.venue)}
+    </span>
+  );
+}
 
 function PublicationCard({ pub }: { pub: Publication }) {
   const content = (
     <div className="flex h-full w-[300px] shrink-0 flex-col gap-4 rounded-2xl border border-border bg-surface p-6">
-      <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-soft text-primary">
-        <BookOpen size={16} />
-      </span>
+      <VenueBadge pub={pub} />
       <h3 className="font-serif text-lg leading-snug text-foreground">
         {pub.title}
       </h3>
-      {pub.note && (
-        <p className="text-sm leading-relaxed text-muted">{pub.note}</p>
-      )}
+      <p className="text-sm leading-relaxed text-muted">{pub.authors}</p>
       <p className="mt-auto text-xs font-medium uppercase tracking-wide text-muted">
         {pub.venue} · {pub.year}
       </p>

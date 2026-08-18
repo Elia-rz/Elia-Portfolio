@@ -12,6 +12,7 @@ export const profile = {
   email: "elia.rezaeian95@gmail.com",
   linkedin: "#",
   resumeUrl: "#",
+  googleScholarUrl: "https://scholar.google.com/citations?user=oTws99AAAAAJ&hl=en",
   location: "United States",
   // TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
   photoUrl: "",
@@ -26,48 +27,76 @@ export type Publication = {
   title: string;
   venue: string;
   year: string;
-  note?: string;
+  authors: string;
+  // Optional: path to a real venue logo (e.g. "/venues/jmir.png").
+  // Leave empty to show an auto-generated monogram badge instead.
+  logoUrl?: string;
   url?: string;
 };
 
-// PLACEHOLDER — replace each entry below with a real publication.
-// Add or remove entries freely; the rolling display adapts automatically.
+// Pulled from Google Scholar — verify against your profile and correct
+// anything that looks off, since automated extraction can misread.
+// https://scholar.google.com/citations?user=oTws99AAAAAJ&hl=en
 export const publications: Publication[] = [
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title:
+      "Explainability and AI confidence in clinical decision support systems: Effects on trust, diagnostic performance, and cognitive load in breast cancer care",
+    venue: "International Journal of Human–Computer Interaction",
+    year: "2026",
+    authors: "Rezaeian, Bayrak, Asan",
   },
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title:
+      "The impact of AI explanations on clinicians' trust and diagnostic accuracy in breast cancer",
+    venue: "Applied Ergonomics",
+    year: "2025",
+    authors: "Rezaeian, Asan, Bayrak",
   },
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title:
+      "Relationship between heart rate and perceived stress in intensive care unit residents: Exploratory analysis using Fitbit data",
+    venue: "JMIR Formative Research",
+    year: "2024",
+    authors: "Wang, Rezaeian, Asan, Zhang, Liao",
   },
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title: "An architecture to support graduated levels of trust for cancer diagnosis with AI",
+    venue: "International Conference on Human-Computer Interaction",
+    year: "2024",
+    authors: "Rezaeian, Bayrak, Asan",
   },
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title: "Customer churn prediction using data mining techniques for an Iranian payment application",
+    venue: "International Conference on Information and Knowledge Technology",
+    year: "2021",
+    authors: "Rezaeian, Haghighi, Shahrabi",
   },
   {
-    title: "Publication title goes here",
-    venue: "Journal or conference name",
-    year: "20XX",
-    note: "One-line summary of the finding or contribution.",
+    title:
+      "A systems dynamic approach to evaluate disruptions in large scale transit systems: A case study of PATH",
+    venue: "System of Systems Engineering Conference (SoSE)",
+    year: "2024",
+    authors: "Khameneh, Rezaeian, Mansouri",
+  },
+  {
+    title:
+      "Children with medical complexity care journey during COVID-19 from providers perspective: a qualitative study",
+    venue: "BMC Health Services Research",
+    year: "2025",
+    authors: "Asan, Elkourdi, Super, Rezaeian, Percy, Clouser",
+  },
+  {
+    title: "Clinician perspectives on trust and adoption of AI in breast cancer diagnosis",
+    venue: "IISE Transactions on Healthcare Systems Engineering",
+    year: "2026",
+    authors: "Rezaeian, Ghorbanichemazkati, Bayrak, Asan",
+  },
+  {
+    title:
+      "How large language models can be used for teamwork and communication in healthcare settings: A scoping review",
+    venue: "International Journal of Medical Informatics",
+    year: "2026",
+    authors: "Super, Rezaeian, Asan",
   },
 ];
 

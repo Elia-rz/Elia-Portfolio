@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Container from "@/components/Container";
 import Reveal from "@/components/motion/Reveal";
 import PublicationMarquee from "@/components/PublicationMarquee";
@@ -24,29 +25,26 @@ export default function PublicationsPage() {
             My research spans explainable AI, clinical decision support, and
             human factors in safety-critical systems.
           </p>
+          {profile.googleScholarUrl && (
+            <a
+              href={profile.googleScholarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary"
+            >
+              View full profile on Google Scholar
+              <ArrowUpRight size={16} />
+            </a>
+          )}
         </Reveal>
       </Container>
 
       {publications.length > 0 ? (
-        <>
-          <Reveal delay={0.1}>
-            <Container>
-              <PublicationMarquee publications={publications} />
-            </Container>
-          </Reveal>
-
+        <Reveal delay={0.1}>
           <Container>
-            <p className="text-center text-sm text-muted">
-              Placeholder entries — replace them with your real publications
-              in{" "}
-              <code className="rounded bg-surface-muted px-1.5 py-0.5 text-xs">
-                src/lib/data.ts
-              </code>
-              . Add or remove as many as you like; the list scrolls
-              automatically either way.
-            </p>
+            <PublicationMarquee publications={publications} />
           </Container>
-        </>
+        </Reveal>
       ) : (
         <Container>
           <Reveal className="rounded-2xl border border-dashed border-border bg-surface-muted p-10 text-center">
