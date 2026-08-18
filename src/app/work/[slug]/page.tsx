@@ -14,22 +14,34 @@ import { caseStudies } from "@/lib/data";
 
 function Figure({
   figure,
+  frame = true,
+  maxWidth = "max-w-full",
+  center = false,
 }: {
   figure: { src: string; alt: string; caption: string };
+  frame?: boolean;
+  maxWidth?: string;
+  center?: boolean;
 }) {
   return (
-    <Reveal className="flex flex-col gap-3">
-      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-white">
+    <Reveal className={`flex flex-col gap-3 ${maxWidth} ${center ? "mx-auto" : ""}`}>
+      <div
+        className={`relative w-full overflow-hidden ${
+          frame ? "rounded-2xl border border-border bg-white" : ""
+        }`}
+      >
         <Image
           src={figure.src}
           alt={figure.alt}
           width={1700}
           height={2200}
-          sizes="(min-width: 1024px) 800px, 100vw"
+          sizes="(min-width: 1024px) 500px, 100vw"
           className="h-auto w-full"
         />
       </div>
-      <p className="text-sm text-muted">{figure.caption}</p>
+      <p className={`text-sm text-muted ${center ? "text-center" : ""}`}>
+        {figure.caption}
+      </p>
     </Reveal>
   );
 }
@@ -209,7 +221,12 @@ export default async function CaseStudyPage({
           </ol>
           {study.processFigure && (
             <div className="lg:col-start-2">
-              <Figure figure={study.processFigure} />
+              <Figure
+                figure={study.processFigure}
+                frame={false}
+                maxWidth="max-w-xs sm:max-w-sm"
+                center
+              />
             </div>
           )}
         </section>
