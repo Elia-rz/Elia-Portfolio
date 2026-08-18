@@ -146,6 +146,11 @@ export type CaseStudy = {
     stats: { label: string; value: string }[];
     narrative: string[];
   };
+  resultsChart?: {
+    title: string;
+    unit: string;
+    bars: { label: string; value: number }[];
+  };
   resultsFigure?: { src: string; alt: string; caption: string };
   quotes?: { text: string; attribution: string }[];
 };
@@ -248,10 +253,21 @@ export const caseStudies: CaseStudy[] = [
         "These findings directly inform best practices for designing transparent, trustworthy clinical decision-support systems: explanations should be there to clarify, not to demonstrate sophistication, and simpler is often the safer default.",
       ],
     },
+    resultsChart: {
+      title: "Diagnostic performance by condition",
+      unit: "%",
+      bars: [
+        { label: "Baseline (no AI)", value: 57 },
+        { label: "No explanation", value: 74 },
+        { label: "AI confidence", value: 74 },
+        { label: "Tumor localization", value: 67 },
+        { label: "Enhanced localization", value: 67 },
+      ],
+    },
     resultsFigure: {
       src: "/case-studies/breast-cancer/results.png",
       alt: "Chart of diagnostic performance, trust, perceived accuracy, and understandability across baseline and four interventions, plus age and experience distributions of the study sample",
-      caption: "Diagnostic performance, trust, and perceived accuracy across conditions, alongside the study sample's age and experience distribution.",
+      caption: "The full results chart from the study, including trust and perceived-accuracy trends and the sample's age and experience distribution.",
     },
     quotes: [
       {
@@ -261,6 +277,22 @@ export const caseStudies: CaseStudy[] = [
       {
         text: "Honestly, I think it would be useful and helpful for somebody who's not as experienced — but once you're a practicing physician with a lot of experience, I don't think that adds much benefit.",
         attribution: "Pathologist, study participant",
+      },
+      {
+        text: "If it's in the PACS system, that's a huge help, because then you're able to just have everything in one area.",
+        attribution: "Radiologist, study participant",
+      },
+      {
+        text: "I think the accuracy would be the highest one, and that just comes with time...",
+        attribution: "Radiologist, study participant",
+      },
+      {
+        text: "As soon as you finish training and you go into practice, there's always new information coming out, and it's very difficult to stay on top of all of it.",
+        attribution: "Oncologist, study participant",
+      },
+      {
+        text: "If it's me getting sued because I relied on AI 100%, I'm gonna read the study myself.",
+        attribution: "Radiologist, study participant",
       },
     ],
   },

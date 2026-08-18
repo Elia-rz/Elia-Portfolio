@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import Tag from "@/components/Tag";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedStat from "@/components/motion/AnimatedStat";
+import BarChart from "@/components/BarChart";
+import QuoteCarousel from "@/components/QuoteCarousel";
+import SectionNav from "@/components/SectionNav";
 import { caseStudies } from "@/lib/data";
 
 function Figure({
@@ -68,6 +71,17 @@ export default async function CaseStudyPage({
   const index = caseStudies.findIndex((s) => s.slug === slug);
   const next = caseStudies[(index + 1) % caseStudies.length];
 
+  const sections = [
+    { id: "overview", label: "Overview" },
+    ...(study.problem ? [{ id: "problem", label: "Problem" }] : []),
+    { id: "goals", label: "Goals" },
+    { id: "process", label: "Process" },
+    { id: "results", label: "Results" },
+    ...(study.quotes && study.quotes.length > 0
+      ? [{ id: "quotes", label: "In their words" }]
+      : []),
+  ];
+
   return (
     <>
       <section className="border-b border-border bg-surface-muted">
@@ -119,9 +133,11 @@ export default async function CaseStudyPage({
         </Container>
       </section>
 
+      <SectionNav sections={sections} />
+
       <Container className="flex flex-col gap-16 py-16 sm:py-20">
         {/* Overview */}
-        <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+        <section id="overview" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
           <Reveal>
             <h2 className="font-serif text-xl text-foreground">Overview</h2>
           </Reveal>
@@ -134,7 +150,7 @@ export default async function CaseStudyPage({
 
         {/* Problem */}
         {study.problem && (
-          <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+          <section id="problem" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
             <Reveal>
               <h2 className="font-serif text-xl text-foreground">Problem</h2>
             </Reveal>
@@ -147,7 +163,7 @@ export default async function CaseStudyPage({
         )}
 
         {/* Goals */}
-        <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+        <section id="goals" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
           <Reveal>
             <h2 className="font-serif text-xl text-foreground">Goals</h2>
           </Reveal>
@@ -168,7 +184,7 @@ export default async function CaseStudyPage({
         </section>
 
         {/* Process */}
-        <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+        <section id="process" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
           <Reveal>
             <h2 className="font-serif text-xl text-foreground">Process</h2>
           </Reveal>
@@ -199,7 +215,7 @@ export default async function CaseStudyPage({
         </section>
 
         {/* Results */}
-        <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+        <section id="results" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
           <Reveal>
             <h2 className="font-serif text-xl text-foreground">
               Results &amp; Impact
@@ -211,6 +227,16 @@ export default async function CaseStudyPage({
                 {study.results.intro}
               </p>
             </Reveal>
+
+            {study.resultsChart && (
+              <Reveal delay={0.05}>
+                <BarChart
+                  title={study.resultsChart.title}
+                  unit={study.resultsChart.unit}
+                  bars={study.resultsChart.bars}
+                />
+              </Reveal>
+            )}
 
             <Reveal
               delay={0.1}
@@ -238,27 +264,15 @@ export default async function CaseStudyPage({
 
         {/* Quotes */}
         {study.quotes && study.quotes.length > 0 && (
-          <section className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr]">
+          <section id="quotes" className="grid grid-cols-1 gap-6 lg:grid-cols-[160px_1fr] scroll-mt-32">
             <Reveal>
               <h2 className="font-serif text-xl text-foreground">
                 In their words
               </h2>
             </Reveal>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {study.quotes.map((quote, i) => (
-                <Reveal key={i} delay={i * 0.1}>
-                  <div className="flex h-full flex-col gap-3 rounded-xl border border-border bg-surface-muted p-6">
-                    <Quote size={20} className="text-primary-soft" />
-                    <p className="font-serif text-lg italic leading-snug text-foreground">
-                      "{quote.text}"
-                    </p>
-                    <p className="mt-auto text-sm text-muted">
-                      {quote.attribution}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={0.08}>
+              <QuoteCarousel quotes={study.quotes} />
+            </Reveal>
           </section>
         )}
       </Container>
