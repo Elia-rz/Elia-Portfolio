@@ -88,7 +88,7 @@ export default function AboutPage() {
             src={profile.aboutPhotoUrl}
             alt={profile.name}
             width={1620}
-            height={1000}
+            height={1500}
             className="w-full"
           />
           <div className="rounded-2xl border border-border bg-surface-muted p-6">
