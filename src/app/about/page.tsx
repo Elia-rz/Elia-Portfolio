@@ -38,7 +38,7 @@ const focusAreas = [
 export default function AboutPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.5fr_0.5fr]">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.2fr_0.8fr]">
         <Reveal className="flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
@@ -88,7 +88,7 @@ export default function AboutPage() {
             src={profile.aboutPhotoUrl}
             alt={profile.name}
             width={1620}
-            height={2025}
+            height={1000}
             className="w-full"
           />
           <div className="rounded-2xl border border-border bg-surface-muted p-6">
