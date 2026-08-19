@@ -18,7 +18,13 @@ function Figure({
   maxWidth = "max-w-full",
   center = false,
 }: {
-  figure: { src: string; alt: string; caption: string };
+  figure: {
+    src: string;
+    alt: string;
+    caption: string;
+    width?: number;
+    height?: number;
+  };
   frame?: boolean;
   maxWidth?: string;
   center?: boolean;
@@ -33,8 +39,8 @@ function Figure({
         <Image
           src={figure.src}
           alt={figure.alt}
-          width={1700}
-          height={2200}
+          width={figure.width ?? 1700}
+          height={figure.height ?? 2200}
           sizes="(min-width: 1024px) 500px, 100vw"
           className="h-auto w-full"
         />

@@ -136,6 +136,14 @@ export const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+type Figure = {
+  src: string;
+  alt: string;
+  caption: string;
+  width?: number;
+  height?: number;
+};
+
 export type CaseStudy = {
   slug: string;
   title: string;
@@ -150,7 +158,7 @@ export type CaseStudy = {
   problem?: string[];
   goals: { title: string; description: string }[];
   process: { title: string; description: string }[];
-  processFigure?: { src: string; alt: string; caption: string };
+  processFigure?: Figure;
   results: {
     intro: string;
     stats: { label: string; value: string }[];
@@ -161,7 +169,7 @@ export type CaseStudy = {
     unit: string;
     bars: { label: string; value: number }[];
   };
-  resultsFigure?: { src: string; alt: string; caption: string };
+  resultsFigure?: Figure;
   quotes?: { text: string; attribution: string }[];
 };
 
@@ -392,5 +400,130 @@ export const caseStudies: CaseStudy[] = [
         "Early design work builds directly on findings from my clinical XAI research, extending the question of \"how much explanation is enough\" from expert, high-stakes decision-making to everyday, low-stakes wellness contexts.",
       ],
     },
+  },
+  {
+    slug: "cmc-care-during-covid",
+    title: "Understanding CMC Care Disruptions During COVID-19",
+    subtitle:
+      "A qualitative study of how the pandemic reshaped care for children with medical complexity, told through 24 frontline providers.",
+    timeline: "May 2023 – Dec 2023",
+    team: "6-person research team — Stevens Institute of Technology & Hackensack Meridian School of Medicine",
+    role: "Qualitative Researcher — Coding, Analysis & Interpretation",
+    audience: "Hospitalists, Specialists, Pediatricians & Home Nurses",
+    tools: ["Zoom", "Excel", "Thematic Analysis"],
+    overview: [
+      "Children with medical complexity (CMC) make up less than 1% of the pediatric population but account for nearly a third of all pediatric healthcare spending — they depend on tightly coordinated care across multiple specialists, home nurses, therapists, and schools. This study asked a simple but under-answered question: what actually happened to that coordination when COVID-19 hit?",
+      "I was part of the coding and analysis team on this IRB-approved qualitative study, conducted with Stevens Institute of Technology and Hackensack Meridian School of Medicine. We ran 24 semi-structured interviews with hospitalists, specialists, outpatient pediatricians, and home nurses who cared for CMC patients during the pandemic, then used inductive thematic analysis to surface patterns in what they experienced.",
+      "Rather than starting from a hypothesis, we let the themes emerge from the interviews themselves — coding independently, meeting weekly to reconcile disagreements, and iterating on the codebook until the categories held up across all 24 transcripts.",
+    ],
+    problem: [
+      "Most COVID-19 healthcare research focused on utilization numbers — missed appointments, telehealth uptake, case counts. Far less was known about the lived, on-the-ground experience of the providers actually holding together care for one of the most vulnerable pediatric populations, or what that experience implied for patient safety when the next disruption hits.",
+    ],
+    goals: [
+      {
+        title: "Map access and continuity disruptions",
+        description:
+          "Understand how short-staffing, restrictions, and supply gaps disrupted appointments, equipment, medication, and home services for CMC patients.",
+      },
+      {
+        title: "Understand the toll on families and staff",
+        description:
+          "Capture the mental workload and burnout pandemic conditions created for both caregiving families and the providers supporting them.",
+      },
+      {
+        title: "Examine infection-control tradeoffs",
+        description:
+          "Identify where measures protecting medically fragile children — masking, isolation, testing — introduced their own communication and developmental costs.",
+      },
+      {
+        title: "Translate provider narratives into recommendations",
+        description:
+          "Turn 24 individual perspectives into concrete, thematically-grounded guidance for more resilient CMC care systems.",
+      },
+    ],
+    process: [
+      {
+        title: "Recruitment",
+        description:
+          "24 healthcare providers (4 hospitalists, 13 specialists, 2 outpatient pediatricians, 5 home nurses) were recruited via purposeful and snowball sampling, with data collection continuing until we reached theoretical saturation.",
+      },
+      {
+        title: "Semi-structured interviews",
+        description:
+          "Interviews ran over Zoom between May and December 2023, averaging about 33 minutes each, audio-recorded (no video, per IRB policy) for accurate transcription.",
+      },
+      {
+        title: "Transcription & anonymization",
+        description:
+          "Recordings were transcribed and validated against the audio, then anonymized by removing all identifying details before analysis began.",
+      },
+      {
+        title: "Independent inductive coding",
+        description:
+          "I coded all 24 transcripts alongside a second researcher using a codebook approach, organized and tracked in a shared spreadsheet.",
+      },
+      {
+        title: "Weekly consensus meetings",
+        description:
+          "The coding team met weekly with the PI to compare codes, resolve disagreements, and refine definitions as new patterns emerged.",
+      },
+      {
+        title: "Thematic synthesis",
+        description:
+          "Codes converged into 10 primary themes, each with its own subthemes, clustered into three overarching categories describing the CMC care journey during COVID-19.",
+      },
+    ],
+    processFigure: {
+      src: "/case-studies/cmc-covid/overview.png",
+      alt: "Diagram of three categories — Access and Continuity of Care, Families Staff and Collaborative Care, and Infection Risk and Prevention Strategies — each broken into themes and subthemes",
+      caption:
+        "The three-category framework that emerged from coding all 24 provider interviews.",
+      width: 1819,
+      height: 950,
+    },
+    results: {
+      intro:
+        "Thematic analysis of the 24 interviews surfaced ten primary themes, clustered into three categories, that together describe how deeply the pandemic reshaped CMC care — for patients, families, and the providers holding it together.",
+      stats: [
+        { label: "Providers interviewed", value: "24" },
+        { label: "Primary themes identified", value: "10" },
+        { label: "Avg. interview length (min)", value: "33" },
+      ],
+      narrative: [
+        "Providers described a cascade of accessibility barriers — chronic short-staffing, medication and equipment shortages, transportation gaps — that delayed care and, in some cases, let conditions like neuromuscular disease quietly worsen while families waited.",
+        "Virtual care kept some continuity alive but introduced its own risks: providers worried about missed physical findings and questioned whether telehealth was being over-relied on for a population that depends on hands-on assessment.",
+        "The burden fell heavily on families and staff alike — parents took on round-the-clock caregiving with little outside support, while providers absorbed rising patient acuity, staffing shortages, and their own fear of bringing COVID-19 home to their families.",
+        "Infection-control measures protected medically fragile children but came at a cost: masks muffled communication with families, and isolation contributed to social and developmental setbacks for kids already navigating extra vulnerability.",
+        "Even under strain, collaboration was a throughline — providers pointed to stronger family communication, more essential social-worker involvement, and closer interdisciplinary teamwork as the adaptations that helped hold care together.",
+      ],
+    },
+    resultsChart: {
+      title: "Interview participants by role",
+      unit: "",
+      bars: [
+        { label: "Specialists", value: 13 },
+        { label: "Home Nurses", value: 5 },
+        { label: "Hospitalists", value: 4 },
+        { label: "Outpatient Pediatricians", value: 2 },
+      ],
+    },
+    quotes: [
+      {
+        text: "We tried to not even skip a beat. We did everything we could to continue to see our patients in the medical setting because they needed chemotherapy, they needed blood work checked.",
+        attribution: "Specialist, study participant",
+      },
+      {
+        text: "There was a legit safety concern for their physical, mental health and their families' physical and mental health. They can be violent, they can be self-injurious, without the proper environment and outlet and therapy.",
+        attribution: "Specialist, study participant",
+      },
+      {
+        text: "Big safety concerns during the pandemic were obviously — our own staff were worried about taking care of these patients, getting sick themselves, bringing it back to their homes, their families.",
+        attribution: "Specialist, study participant",
+      },
+      {
+        text: "The children with medical complexity were more likely than healthy children to get sick — number one from COVID, and number two from any other infections.",
+        attribution: "Hospitalist, study participant",
+      },
+    ],
   },
 ];
