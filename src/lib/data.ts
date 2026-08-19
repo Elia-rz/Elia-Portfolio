@@ -15,11 +15,21 @@ export const profile = {
   googleScholarUrl: "https://scholar.google.com/citations?user=oTws99AAAAAJ&hl=en",
   location: "United States",
   //  TODO: drop a photo in /public (e.g. /portrait.jpg) and set the path here.
-  photoUrl: "/portrait/main.JPG",
+  photoUrl: "/portrait/main.png",
+  // Used on the About page specifically, so it doesn't repeat the Home photo.
+  aboutPhotoUrl: "/portrait/about.jpg",
   stats: [
     { label: "Years of experience", value: "5+" },
     { label: "Peer-reviewed publications", value: "10+" },
     { label: "Clinicians & users studied", value: "150+" },
+  ],
+  hobbies: [
+    { emoji: "🎾", label: "Tennis" },
+    { emoji: "🎹", label: "Playing piano" },
+    { emoji: "🧭", label: "Exploring outside" },
+    { emoji: "🏋️", label: "Going to the gym" },
+    { emoji: "🎧", label: "Diving into podcasts" },
+    { emoji: "🍽️", label: "Good food & great conversation" },
   ],
 };
 

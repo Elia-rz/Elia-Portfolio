@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import Reveal from "@/components/motion/Reveal";
 import PortraitFrame from "@/components/PortraitFrame";
+import HobbyMarquee from "@/components/HobbyMarquee";
 import { profile } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -37,7 +38,7 @@ const focusAreas = [
 export default function AboutPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.5fr_0.5fr]">
         <Reveal className="flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
@@ -70,19 +71,19 @@ export default function AboutPage() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.12} className="flex flex-col gap-8">
+        <Reveal delay={0.12} className="flex flex-col gap-6">
           <PortraitFrame
-            src={profile.photoUrl}
+            src={profile.aboutPhotoUrl}
             alt={profile.name}
-            className="aspect-[4/5] w-full"
+            className="aspect-[4/5] w-full max-w-[220px]"
           />
-          <div className="rounded-2xl border border-border bg-surface-muted p-8">
-            <h2 className="font-serif text-xl text-foreground">
+          <div className="rounded-2xl border border-border bg-surface-muted p-6">
+            <h2 className="font-serif text-lg text-foreground">
               Areas of focus
             </h2>
-            <div className="mt-6 flex flex-col gap-6">
+            <div className="mt-5 flex flex-col gap-5">
               {focusAreas.map((area) => (
-                <div key={area.title} className="flex flex-col gap-1.5">
+                <div key={area.title} className="flex flex-col gap-1">
                   <h3 className="text-sm font-semibold text-primary">
                     {area.title}
                   </h3>
@@ -95,6 +96,18 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </div>
+
+      <Reveal delay={0.2} className="mt-20 flex flex-col gap-6">
+        <div>
+          <p className="text-sm font-medium uppercase tracking-widest text-primary">
+            Outside of work
+          </p>
+          <h2 className="mt-2 font-serif text-2xl text-foreground">
+            A few things I love
+          </h2>
+        </div>
+        <HobbyMarquee hobbies={profile.hobbies} />
+      </Reveal>
     </Container>
   );
 }
