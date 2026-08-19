@@ -4,32 +4,34 @@ import { User } from "lucide-react";
 export default function PortraitFrame({
   src,
   alt,
-  size = 128,
+  className = "",
 }: {
   src?: string;
   alt: string;
-  size?: number;
+  className?: string;
 }) {
   if (src) {
     return (
-      <Image
-        src={src}
-        alt={alt}
-        width={size}
-        height={size}
-        className="rounded-2xl border border-border object-cover"
-        style={{ width: size, height: size }}
-      />
+      <div
+        className={`relative overflow-hidden rounded-2xl border border-border ${className}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 480px, 100vw"
+          className="object-cover"
+        />
+      </div>
     );
   }
 
   return (
     <div
-      className="flex flex-col items-center justify-center gap-1.5 rounded-2xl border border-dashed border-border bg-surface-muted text-center"
-      style={{ width: size, height: size }}
+      className={`flex flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-border bg-surface-muted text-center ${className}`}
     >
-      <User size={22} className="text-muted" />
-      <span className="px-3 text-[11px] leading-tight text-muted">
+      <User size={32} className="text-muted" />
+      <span className="px-4 text-sm leading-tight text-muted">
         Add your photo
       </span>
     </div>

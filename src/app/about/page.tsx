@@ -39,7 +39,6 @@ export default function AboutPage() {
     <Container className="py-20 sm:py-28">
       <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="flex flex-col gap-6">
-          <PortraitFrame src={profile.photoUrl} alt={profile.name} />
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
           </p>
@@ -71,7 +70,12 @@ export default function AboutPage() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.12} className="flex flex-col gap-4">
+        <Reveal delay={0.12} className="flex flex-col gap-8">
+          <PortraitFrame
+            src={profile.photoUrl}
+            alt={profile.name}
+            className="aspect-[4/5] w-full"
+          />
           <div className="rounded-2xl border border-border bg-surface-muted p-8">
             <h2 className="font-serif text-xl text-foreground">
               Areas of focus

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import PortraitFrame from "@/components/PortraitFrame";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedStat from "@/components/motion/AnimatedStat";
 import { profile, caseStudies } from "@/lib/data";
@@ -11,7 +12,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="border-b border-border">
-        <Container className="flex flex-col gap-8 py-20 sm:py-28">
+        <Container className="grid grid-cols-1 items-center gap-10 py-20 sm:py-28 lg:grid-cols-[1fr_360px]">
           <Reveal>
             <p className="text-sm font-medium uppercase tracking-widest text-primary">
               {profile.title}
@@ -39,6 +40,13 @@ export default function Home() {
                 Get in touch
               </Link>
             </div>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <PortraitFrame
+              src={profile.photoUrl}
+              alt={profile.name}
+              className="aspect-square w-full max-w-[360px]"
+            />
           </Reveal>
         </Container>
       </section>
