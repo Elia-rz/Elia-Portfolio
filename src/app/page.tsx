@@ -45,7 +45,7 @@ export default function Home() {
             <PortraitFrame
               src={profile.photoUrl}
               alt={profile.name}
-              width={850}
+              width={1000}
               height={1151}
               border={false}
               className="w-full max-w-[360px]"
