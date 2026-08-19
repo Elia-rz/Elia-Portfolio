@@ -38,7 +38,7 @@ const focusAreas = [
 export default function AboutPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.5fr_0.5fr]">
         <Reveal className="flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
