@@ -170,6 +170,11 @@ export type CaseStudy = {
     bars: { label: string; value: number }[];
   };
   resultsFigure?: Figure;
+  themeFramework?: {
+    tone: "accent" | "primary-soft" | "primary";
+    name: string;
+    themes: { name: string; subthemes: string[] }[];
+  }[];
   quotes?: { text: string; attribution: string }[];
 };
 
@@ -252,7 +257,7 @@ export const caseStudies: CaseStudy[] = [
     processFigure: {
       src: "/case-studies/breast-cancer/methodology.png",
       alt: "Study flow diagram: recruitment and demographics, experiment design across baseline, AI-assisted baseline, and the four explainability interventions, then post-study interviews",
-      caption: "The full study flow — from recruitment through the interrupted time-series experiment to post-study interviews.",
+      caption: "The full study flow",
     },
     results: {
       intro:
@@ -473,14 +478,6 @@ export const caseStudies: CaseStudy[] = [
           "Codes converged into 10 primary themes, each with its own subthemes, clustered into three overarching categories describing the CMC care journey during COVID-19.",
       },
     ],
-    processFigure: {
-      src: "/case-studies/cmc-covid/overview.png",
-      alt: "Diagram of three categories — Access and Continuity of Care, Families Staff and Collaborative Care, and Infection Risk and Prevention Strategies — each broken into themes and subthemes",
-      caption:
-        "The three-category framework that emerged from coding all 24 provider interviews.",
-      width: 1819,
-      height: 950,
-    },
     results: {
       intro:
         "Thematic analysis of the 24 interviews surfaced ten primary themes, clustered into three categories, that together describe how deeply the pandemic reshaped CMC care — for patients, families, and the providers holding it together.",
@@ -507,6 +504,94 @@ export const caseStudies: CaseStudy[] = [
         { label: "Outpatient Pediatricians", value: 2 },
       ],
     },
+    themeFramework: [
+      {
+        tone: "accent",
+        name: "Access and Continuity of Care",
+        themes: [
+          {
+            name: "Accessibility Challenges",
+            subthemes: [
+              "Care Continuity",
+              "Home Service",
+              "Emergency Care",
+              "Equipment",
+              "Transportation",
+              "Medication",
+              "Outpatient & Specialist Access",
+              "Supportive Services",
+            ],
+          },
+          {
+            name: "Care Delay",
+            subthemes: ["Backlog on Visits", "Disease Escalation", "Hesitation to Seek Care"],
+          },
+          {
+            name: "School Closure",
+            subthemes: ["Education Impact", "Lack of Socializing", "Loss of Health Services"],
+          },
+          {
+            name: "Virtual Care Risks",
+            subthemes: ["Lack of Physical Interaction", "Over-reliance", "Care Delay"],
+          },
+          {
+            name: "Care Coordination Challenges",
+            subthemes: [
+              "Care Transition",
+              "Scheduling Adjustment",
+              "Centralized Care",
+              "Policy Adaptation",
+              "Extended Visit Times",
+            ],
+          },
+        ],
+      },
+      {
+        tone: "primary-soft",
+        name: "Families, Staff & Collaborative Care",
+        themes: [
+          {
+            name: "Impact on Children and Families",
+            subthemes: [
+              "Family Workload",
+              "Parents' Mental Workload",
+              "Impact on Siblings",
+              "One Parent Policy",
+              "Child Mental Health",
+              "Child Behavioral Issues",
+            ],
+          },
+          {
+            name: "Impact on Staff",
+            subthemes: ["Providers' Mental Workload", "Providers' Workload"],
+          },
+          {
+            name: "Collaboration",
+            subthemes: ["Family Communication", "Social Worker", "Provider's Teamwork"],
+          },
+        ],
+      },
+      {
+        tone: "primary",
+        name: "Infection Risk and Prevention Strategies",
+        themes: [
+          {
+            name: "CMC Increased Risk of Disease",
+            subthemes: [],
+          },
+          {
+            name: "Impacts of Infection Control Practices",
+            subthemes: [
+              "Limited In-person Visits",
+              "Pre-admission COVID Testing",
+              "Mask Wearing",
+              "Isolation",
+              "Social Distancing",
+            ],
+          },
+        ],
+      },
+    ],
     quotes: [
       {
         text: "We tried to not even skip a beat. We did everything we could to continue to see our patients in the medical setting because they needed chemotherapy, they needed blood work checked.",

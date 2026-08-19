@@ -8,6 +8,7 @@ import Tag from "@/components/Tag";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedStat from "@/components/motion/AnimatedStat";
 import BarChart from "@/components/BarChart";
+import ThemeFrameworkDiagram from "@/components/ThemeFrameworkDiagram";
 import QuoteCarousel from "@/components/QuoteCarousel";
 import SectionNav from "@/components/SectionNav";
 import { caseStudies } from "@/lib/data";
@@ -275,6 +276,16 @@ export default async function CaseStudyPage({
                 <p key={i}>{p}</p>
               ))}
             </div>
+
+            {study.themeFramework && (
+              <div className="flex flex-col gap-3">
+                <p className="text-sm text-muted">
+                  The three-category framework that emerged from coding all
+                  the interviews:
+                </p>
+                <ThemeFrameworkDiagram categories={study.themeFramework} />
+              </div>
+            )}
 
             {study.resultsFigure && <Figure figure={study.resultsFigure} />}
           </div>
