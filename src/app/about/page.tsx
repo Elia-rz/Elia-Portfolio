@@ -69,13 +69,25 @@ export default function AboutPage() {
               See publications
             </Link>
           </div>
+
+          <div className="mt-10 flex flex-col gap-5">
+            <div>
+              <p className="text-sm font-medium uppercase tracking-widest text-primary">
+                Outside of work
+              </p>
+              <h2 className="mt-2 font-serif text-2xl text-foreground">
+                A few things I love
+              </h2>
+            </div>
+            <HobbyMarquee hobbies={profile.hobbies} />
+          </div>
         </Reveal>
 
         <Reveal delay={0.12} className="flex flex-col gap-6">
           <PortraitFrame
             src={profile.aboutPhotoUrl}
             alt={profile.name}
-            className="aspect-[4/5] w-full max-w-[220px]"
+            className="aspect-[4/5] w-full"
           />
           <div className="rounded-2xl border border-border bg-surface-muted p-6">
             <h2 className="font-serif text-lg text-foreground">
@@ -96,18 +108,6 @@ export default function AboutPage() {
           </div>
         </Reveal>
       </div>
-
-      <Reveal delay={0.2} className="mt-20 flex flex-col gap-6">
-        <div>
-          <p className="text-sm font-medium uppercase tracking-widest text-primary">
-            Outside of work
-          </p>
-          <h2 className="mt-2 font-serif text-2xl text-foreground">
-            A few things I love
-          </h2>
-        </div>
-        <HobbyMarquee hobbies={profile.hobbies} />
-      </Reveal>
     </Container>
   );
 }
