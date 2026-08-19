@@ -45,7 +45,10 @@ export default function Home() {
             <PortraitFrame
               src={profile.photoUrl}
               alt={profile.name}
-              className="aspect-square w-full max-w-[360px]"
+              width={850}
+              height={1151}
+              border={false}
+              className="w-full max-w-[360px]"
             />
           </Reveal>
         </Container>

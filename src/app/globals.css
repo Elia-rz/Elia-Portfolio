@@ -116,11 +116,6 @@ body {
   animation-play-state: paused;
 }
 
-.marquee-track-reverse {
-  animation-direction: reverse;
-  animation-duration: 22s;
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);

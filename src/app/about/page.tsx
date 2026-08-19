@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import Reveal from "@/components/motion/Reveal";
 import PortraitFrame from "@/components/PortraitFrame";
-import HobbyMarquee from "@/components/HobbyMarquee";
+import HobbyPills from "@/components/HobbyPills";
 import { profile } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ const focusAreas = [
 export default function AboutPage() {
   return (
     <Container className="py-20 sm:py-28">
-      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.5fr_0.5fr]">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal className="flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-widest text-primary">
             About me
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 A few things I love
               </h2>
             </div>
-            <HobbyMarquee hobbies={profile.hobbies} />
+            <HobbyPills hobbies={profile.hobbies} />
           </div>
         </Reveal>
 
@@ -87,7 +87,9 @@ export default function AboutPage() {
           <PortraitFrame
             src={profile.aboutPhotoUrl}
             alt={profile.name}
-            className="aspect-[4/5] w-full"
+            width={1620}
+            height={2025}
+            className="w-full"
           />
           <div className="rounded-2xl border border-border bg-surface-muted p-6">
             <h2 className="font-serif text-lg text-foreground">
